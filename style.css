@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+header {
+    display: grid;
+    margin: 6px;
+    justify-self: center;
+}
+
+button {
+    padding: 5px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+div {
+    height: 300px;
+    width: 300px;
+    background-color: red;
+}
