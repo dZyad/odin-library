@@ -26,14 +26,27 @@ function addPetCard(pet) {
     const nameField = document.createElement('p');
     const animalField = document.createElement('p');
     const adoptField = document.createElement('p');
+    const deleteCard = document.createElement('button');
 
     nameField.textContent = `Name: ${pet.name}`;
     animalField.textContent = `Animal: ${pet.animal}`;
     adoptField.textContent = pet.isAdopted ? 'Family member' : 'In transit';
+    deleteCard.textContent = 'Release Pet';
+
+    if (pet.isAdopted) {
+        deleteCard.disabled = true;
+    }
+
+    deleteCard.addEventListener('click', () => {
+        index = myPets.findIndex((p) => p.name === pet.name);
+        mainContainer.removeChild(newCard);
+        myPets.splice(index, 1);
+    });
 
     newCard.appendChild(nameField);
     newCard.appendChild(animalField);
     newCard.appendChild(adoptField);
+    newCard.appendChild(deleteCard);
 
     mainContainer.appendChild(newCard);
 }
