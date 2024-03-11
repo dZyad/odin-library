@@ -27,11 +27,55 @@ main {
 }
 
 .card {
-    height: 300px;
-    width: 300px;
-    background-color: red;
+    height: auto;
+    width: fit-content;
+    background-color: lightgrey;
+    padding: 1rem;
+    border-radius: 25px;
 }
 
 .card p {
     font-size: 2rem;
+    padding-left: 5px;
+}
+
+.card button {
+    margin: 5px;
+    width: 100px;
+}
+
+::backdrop {
+    background-image: linear-gradient(
+      45deg,
+      grey,
+      lightgrey
+    );
+    opacity: 0.75;
+}
+
+#newPetForm {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: fit-content;
+    padding: 3rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+form > legend {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+form > div{
+    font-size: 16px;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
 }

@@ -78,7 +78,7 @@ const addButton = document.querySelector('#addPetButton');
 const newPetForm = document.querySelector('#newPetForm');
 const confirmBtn = newPetForm.querySelector("#confirmBtn");
 const newPetName = newPetForm.querySelector('#newPetName');
-const newPetType = newPetForm.querySelector('#newPetAnimal');
+const newPetAnimal = newPetForm.querySelector('#newPetAnimal');
 const newPetSituation = newPetForm.querySelector('#newPetIsAdopted');
 
 addButton.addEventListener('click', () => {
@@ -87,7 +87,13 @@ addButton.addEventListener('click', () => {
 
 confirmBtn.addEventListener('click', (event) => {
     event.preventDefault();
-    addPetToMyPets(newPetName.value, newPetType.value, newPetSituation.checked);
+
+    if (newPetName.value.trim() === '' || newPetAnimal.value.trim() === '') {
+        alert('Please, fill all the fields.');
+        return;
+    }
+
+    addPetToMyPets(newPetName.value, newPetAnimal.value, newPetSituation.checked);
     addPetCard(myPets[myPets.length - 1]);
 
     newPetForm.close();
