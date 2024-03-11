@@ -1,10 +1,11 @@
 const myPets = [];
 
-class Pet {
-    constructor(name, animal, isAdopted) {
-        this.name = name;
-        this.animal = animal;
-        this.isAdopted = isAdopted;
+function Pet (name, animal, isAdopted) {
+    this.name = name;
+    this.animal = animal;
+    this.isAdopted = isAdopted;
+    this.adopt = function() {
+        this.isAdopted = true;
     }
 }
 
@@ -26,15 +27,22 @@ function addPetCard(pet) {
     const nameField = document.createElement('p');
     const animalField = document.createElement('p');
     const adoptField = document.createElement('p');
+    const adoptCard = document.createElement('button');
     const deleteCard = document.createElement('button');
 
     nameField.textContent = `Name: ${pet.name}`;
     animalField.textContent = `Animal: ${pet.animal}`;
     adoptField.textContent = pet.isAdopted ? 'Family member' : 'In transit';
     deleteCard.textContent = 'Release Pet';
+    adoptCard.textContent = 'Adopt Pet';
+
+    const disableButtons = () => {
+        deleteCard.disabled = true;
+        adoptCard.disabled = true;
+    }
 
     if (pet.isAdopted) {
-        deleteCard.disabled = true;
+        disableButtons();
     }
 
     deleteCard.addEventListener('click', () => {
@@ -43,9 +51,16 @@ function addPetCard(pet) {
         myPets.splice(index, 1);
     });
 
+    adoptCard.addEventListener('click', () => {
+        pet.adopt();
+        adoptField.textContent = 'Family member';
+        disableButtons();
+    })
+
     newCard.appendChild(nameField);
     newCard.appendChild(animalField);
     newCard.appendChild(adoptField);
+    newCard.appendChild(adoptCard);
     newCard.appendChild(deleteCard);
 
     mainContainer.appendChild(newCard);
