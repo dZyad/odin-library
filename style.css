@@ -31,3 +31,7 @@ div {
     width: 300px;
     background-color: red;
 }
+
+.card p {
+    font-size: 2rem;
+}
