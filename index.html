@@ -8,7 +8,24 @@
     <title>Pet Library</title>
 </head>
 <body>
-    <header><button type="button" onclick="">Add</button></header>
+    <dialog id="newPetForm">
+        <form>
+            <legend>Insert new pet</legend>
+            <p>
+                <label for="name">Name:</label>
+                <input type="text" id="newPetName" required>
+                <label for="animal">Type:</label>
+                <input type="text" id="newPetAnimal" required>
+                <label for="isAdopted">Is Adopted?</label>
+                <input type="checkbox" id="newPetIsAdopted">
+            </p>
+            <div>
+                <button value="cancel" formmethod="dialog">Cancel</button>
+                <button id="confirmBtn" value="default">Confirm</button>
+            </div>
+        </form>
+    </dialog>
+    <header><button type="button" id="addPetButton">Add</button></header>
     <main>
 
     </main>

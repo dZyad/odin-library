@@ -18,13 +18,6 @@ addPetToMyPets("Pompi", "Cat", true);
 addPetToMyPets("Flora", "Cat", true);
 addPetToMyPets("Bongo", "Dog", false);
 
-function addRedSquare() {
-    let newSquare = document.createElement('div');
-    const mainContainer = document.querySelector('main');
-
-    mainContainer.appendChild(newSquare);
-}
-
 function addPetCard(pet) {
     const mainContainer = document.querySelector('main');
     const newCard = document.createElement('div');
@@ -52,3 +45,22 @@ function addActualPets() {
 }
 
 addActualPets();
+
+const addButton = document.querySelector('#addPetButton');
+const newPetForm = document.querySelector('#newPetForm');
+const confirmBtn = newPetForm.querySelector("#confirmBtn");
+const newPetName = newPetForm.querySelector('#newPetName');
+const newPetType = newPetForm.querySelector('#newPetAnimal');
+const newPetSituation = newPetForm.querySelector('#newPetIsAdopted');
+
+addButton.addEventListener('click', () => {
+    newPetForm.showModal();
+})
+
+confirmBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    addPetToMyPets(newPetName.value, newPetType.value, newPetSituation.checked);
+    addPetCard(myPets[myPets.length - 1]);
+
+    newPetForm.close();
+})
