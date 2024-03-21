@@ -1,11 +1,13 @@
 const myPets = [];
 
-function Pet (name, animal, isAdopted) {
-    this.name = name;
-    this.animal = animal;
-    this.isAdopted = isAdopted;
-    this.adopt = function() {
-        this.isAdopted = true;
+class Pet {
+    constructor(name, animal, isAdopted) {
+        this.name = name;
+        this.animal = animal;
+        this.isAdopted = isAdopted;
+        this.adopt = function () {
+            this.isAdopted = true;
+        };
     }
 }
 
